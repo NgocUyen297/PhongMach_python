@@ -1,0 +1,25 @@
+ {% extends 'admin/base.html' %}
+
+ {% block body %}
+ {% if current_user.is_authenticated %}
+ <h1>CHÀO MỪNG {{ current_user.name }} ĐẾN VỚI ADMINISTRATION WEBSITE!!!</h1>
+ {% else %}
+ <h1 class="text-center text-danger">Đăng nhập quản trị</h1>
+    <form method="post" action="{{ url_for('signin_admin') }}">
+        <div class="form-group">
+           <label for="username">Username</label>
+           <input type="text" name="username" class="form-control"
+                  id="username" placeholder="Nhập username..." required />
+       </div>
+        <div class="form-group">
+           <label for="password">Mật khẩu</label>
+           <input type="password"
+                  name="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Nhập mật khẩu..." required />
+       </div>
+        <input type="submit" value="Đăng nhập" class="btn btn-danger" />
+    </form>
+ {% endif %}
+ {% endblock %}

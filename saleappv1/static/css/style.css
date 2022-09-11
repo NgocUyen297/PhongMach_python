@@ -1,0 +1,106 @@
+* {
+  font-family: Arial;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 10px;
+  background: white;
+  border: solid LightBlue;
+}
+h1.sub{
+    text-align: center;
+}
+
+/*List customers*/
+table.List_Customers {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+.container{
+    width: 300%
+    margin: 10 auto;
+}
+
+.navbar {
+    background: LightBlue;
+
+}
+
+/*Menu*/
+div.submenu > nav {
+  background-color: LightBlue;
+}
+ul.menu {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+ul.menu > li {
+  min-width: 110px;
+  text-align: center;
+}
+ul.menu > li > a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  color: black;
+}
+ ul {
+  list-style-type: none;
+}
+
+ul.menu > li > a:hover {
+  background-color: black;
+  color: white;
+  border-bottom: 5px inset black;
+}
+
+
+div.submenu2 {
+    padding: 5px;
+    margin-left: auto;
+    white: 50%;
+}
+/*CSS slideshow*/
+a.slideshow {
+  font-size: 100%;
+  background: black;
+  opacity: 0.75;
+  padding: 4px ;
+  color: white ;
+  text-decoration: none;
+}
+h4.slide {
+  font-size: 120%;
+}
+
+h6 > a {
+    padding: 10px;
+    width: 20%;
+}
+.gender{
+    display:flex;
+    align-items: center;
+}
+
+.gender input{
+    width: 15px;
+    margin: 10px;
+}
+
+.table_medicine{
+ border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+}
+
+input.form-control.find-id-user {
+    width: 30%;
+    display: inline-block;
+}

@@ -1,0 +1,16 @@
+[{
+ "id": 10,
+ "name": "Phan Trang",
+ "gender": "female",
+ "dateofbirth": "7/2/2000",
+ "address": "Q6, TPHCM",
+ "Adate": "12/1/2022"
+}, {
+ "id": 11,
+ "name": "Phan Thu",
+ "gender": "female",
+ "dateofbirth": "9/10/2001",
+ "address": "Q1, TPHCM",
+ "Adate": "2/2/2022"
+}]
+

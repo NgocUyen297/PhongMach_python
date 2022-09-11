@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md">
+     <!--Menu-->
+    <div class="submenu" id="submenu-phone">
+        <nav>
+            <ul class="menu">
+                <li><a href="{{ url_for('home') }}">Trang chủ</a></li>
+                <li><a href="{{ url_for('bills_list') }}">Danh sách hóa đơn</a> </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="{{ url_for('home') }}">
+              {% if current_user.avatar %}
+                <img src="{{ current_user.avatar }}" class="rounded-circle" width="30" alt="{{ current_user.name }}" />
+              {% else %}
+                <img src="{{ url_for('static', filename='images/TT.png') }}" class="rounded-circle" width="30" alt="{{ current_user.name }}" />
+              {% endif %}
+              {{ current_user.username }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('made_schedule') }}">Đăng kí lịch khám</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('phieu_kham') }}">Lập phiếu khám</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('user_signout') }}">Đăng xuất</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="{{ url_for('user_register') }}">Đăng kí</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('user_signin') }}">Đăng nhập</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</body>
+</html>

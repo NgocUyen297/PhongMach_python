@@ -1,0 +1,69 @@
+{% extends 'layout/base.html' %}
+
+    {% block title %}Phiếu khám{% endblock %}
+
+    {% block content %}
+    <h1>Lập phiếu khám</h1>
+{% if err_msg %}
+<h1 class="text-danger">Bị Lỗi: {{ err_msg}}</h1>
+{% else%}
+{% endif %}
+        <form method="post" action="{{url_for('lap_phieu_kham')}}">
+             <div class="form-group">
+                <label for="name">Họ tên</label>
+                <input type="text" name="name" required id="name" class="form-control"/>
+            </div>
+             <div class="form-group">
+                <label for="NgayKham">Ngày khám</label>
+                <input type="date" name="NgayKham" required id="NgayKham" class="form-control"/>
+             </div>
+             <div class="form-group">
+                <label for="symptom">Triệu chứng</label>
+                <input type="text" name="symptom" required id="symptom" class="form-control"/>
+             </div>
+             <div class="form-group">
+                <label for="prognostication">Dự đoán loại bệnh</label>
+                <input type="text" name="prognostication" required id="prognostication" class="form-control"/>
+             </div>
+
+            <table class="table_medicine table" id="table_medicinebill">
+                <tr>
+                    <td>Thuốc</td>
+                    <td>Đơn vị</td>
+                    <td>Cách dùng</td>
+                    <td>Số lượng</td>
+                </tr>
+                {% for i in range(30) %}
+                <tr>
+                    <td>
+                        <select class="medicine" onchange="addToCart({{i}})">
+                            <option value="0">Select</option>
+                            {% for m in medicine %}
+                            <option value="{{m.id}}" name ="tenThuoc">{{ m.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+
+                    <td class="unit">
+                    </td>
+                    <td>
+                          <div class="how_to_use">
+                          </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="quantity" min="1"
+                                   onblur="updateQuantity({{i}}, this)"
+                                   style="width:100px"
+                            />
+                        </div>
+                    </td>
+                    <td>
+                        <input class="btn btn-danger" value="Xóa" type="button" />
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+              <input type="submit" value="Lưu phiếu" class="btn btn-danger" onclick="saveMedicalBill()" />
+        </form>
+    {% endblock %}

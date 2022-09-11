@@ -1,0 +1,63 @@
+{% extends 'layout/base.html' %}
+
+    {% block title %}Danh sách khách hàng{% endblock %}
+
+    {% block content %}
+    <body>
+        <h1 class="sub"> Danh sách khám bệnh </h1>
+        <!--Menu-->
+        <div class="submenu" id="submenu-phone">
+            <nav>
+                <ul class="menu">
+                    <li><a href="{{ url_for('home') }}">Trang chủ</a></li>
+                    <li><a href="#">Danh sách khám bệnh</a> </li>
+                    <li><a href="{{ url_for('bills_list') }}">Danh sách hóa đơn</a> </li>
+                    <li><a href="#">Thống kê báo cáo</a> </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container">
+               <hr>
+
+                    <form>
+                        <input type="number" name="id" placeholder="Nhập id khách hàng..." />
+                        <input type="text" name="keyword" placeholder="Nhập tên khách hàng..." />
+                        <!--Chua chay dc
+                        <input type="text" name="NgayHen" placeholder="Nhập ngày hẹn..." />-->
+                         <input type="submit" value="Tìm" />
+                    </form>
+
+                <hr>
+
+                <div class="submenu2">
+                    <button onclick="showSearch()"><a href = "{{ url_for('made_schedule') }}">Thêm</a></button>
+                    <button onclick="showSearch()">Xóa</button>
+                    <button onclick="showSearch()">Sửa</button>
+                 </div>
+
+            <div class="table">
+                <table border="1" class="List_Customers">
+                    <tr>
+                        <th>Mã KH</th>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Năm sinh</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày hẹn khám</th>
+                    </tr>
+                    {% for p in customers.query.all() %}
+                    <tr>
+                        <td>{{ p.id}}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.gender }}</td>
+                        <td>{{ p.dateofbirth }}</td>
+                        <td>{{ p.address }}</td>
+                        <td>{{ p.Adate }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </body>
+    {% endblock %}

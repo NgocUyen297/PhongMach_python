@@ -1,0 +1,15 @@
+[{
+ "id": 4,
+ "name": "Phan Trang",
+ "Adate": "12/1/2022",
+ "TienKham": 300000,
+ "TienThuoc": 200000,
+ "cus_id": 10
+}, {
+ "id": 5,
+ "name": "Phan Thu",
+ "Adate": "2/2/2022",
+ "TienKham": 200000,
+ "TienThuoc": 50000,
+ "cus_id": 11
+}]

@@ -1,0 +1,57 @@
+{% extends 'layout/base.html' %}
+
+    {% block title %}Danh sách hóa đơn{% endblock %}
+
+    {% block content %}
+    <body>
+        <h1 class="sub"> Danh sách hóa đơn </h1>
+        <div class="container2">
+               <hr>
+                    <form method="post" action="{{url_for('bills_list')}}">
+                        <div class="form-group">
+                        <input type="text" name="user_id" placeholder="Nhập id khách hàng..."  class="form-control find-id-user" />
+                        </div>
+                        <input type="submit" value="Tìm" />
+                    </form>
+                <hr>
+
+                <div class="submenu2">
+                    <button onclick="showSearch()">Thêm</button>
+                    <button onclick="showSearch()">Xóa</button>
+                    <button onclick="showSearch()">Sửa</button>
+                    <button onclick="showSearch()">In</button>
+                 </div>
+            <div class="table">
+                <table border="1" class="List_Customers">
+                    <tr>
+                        <th>Mã HĐ</th>
+                        <th>Họ tên</th>
+                        <th>Ngày khám</th>
+                        <th>Tiền khám</th>
+                        <th>Tiền thuốc</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                    {% for b in bills %}
+                    <tr>
+                        <td>{{ b.id}}</td>
+                        <td>{{ b.name }}</td>
+                        <td>{{ b.examined_date }}</td>
+                        <td>{{ "{:,.1f}".format(b.TienKham) }} VND</td>
+                        <td>{{ "{:,.1f}".format(b.TienThuoc) }} VND</td>
+                        {% if b.state_pay %}
+                        <td>
+                        <p style="color: black;">Đã thanh toán</p>
+                        </td>
+                        {% else %}
+                        <td>
+                            <input type="button" class="btn btn-danger" value="Thanh toán" onclick="pay({{b.id}})">
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </body>
+    {% endblock %}
